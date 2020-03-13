@@ -1,0 +1,683 @@
+.clear {
+  float: none!important;
+  clear: both!important;
+  display: table!important;
+  width: 0!important;
+  height: 0!important;
+  margin: 0!important;
+  padding: 0!important;
+}
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#bg-dark {
+  position: fixed;
+  top: -40%;
+  left: -40%;
+  right: -40%;
+  bottom: -40%;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+}
+.flexParent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+.flexChild {
+  flex-grow: 1;
+}
+.frame {
+  -webkit-border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;
+  overflow: visible;
+  background: #fff;
+  border: 0px solid #d8d8d8;
+  border-bottom-width: 2px;
+  border-top-width: 0px;
+}
+.fr {
+  -webkit-border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;
+  border-bottom-width: 2px;
+}
+.fr-convex {
+  -webkit-border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;
+  overflow: visible;
+  background: #fff;
+  border: 0px solid #d8d8d8;
+  border-top-width: 0px;
+  /*display: inline-block;*/
+  font-weight: bold;
+  padding: 0.7em;
+  margin: 0.3em;
+  border-width: 1px;
+  border-style: solid;
+  border-bottom-width: 2px;
+  text-decoration: none;
+  border-color: #555555;
+  color: #fff;
+  background: #666666;
+  box-shadow: 0 1px 0px 0px rgba(255, 255, 255, 0.2) inset;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.fr-concave {
+  -webkit-border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;
+  overflow: visible;
+  background: #fff;
+  border: 0px solid #d8d8d8;
+  border-top-width: 0px;
+  /*display: inline-block;*/
+  font-weight: bold;
+  padding: 0.7em;
+  margin: 0.3em;
+  border-width: 1px;
+  border-style: solid;
+  border-bottom-width: 2px;
+  text-decoration: none;
+  border-color: #777;
+  color: #fff;
+  background: #666666;
+  box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.2) inset;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  overflow: hidden;
+  background: #151515;
+}
+body {
+  background: #151515;
+  padding: 0;
+  margin: 0;
+  font-family: Verdana, Helvetica, Geneva, Lucida, sans-s;
+}
+#app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 3px;
+  margin-bottom: 3px;
+  background: #222;
+  -webkit-app-region: drag;
+}
+#app.default .sounder {
+  width: 8rem;
+  height: 8rem;
+  flex-basis: 8rem;
+}
+#app.default .sconf {
+  flex-basis: 8rem;
+}
+#app.square .sounder {
+  width: 4rem;
+  height: 4rem;
+  flex-basis: 4rem;
+}
+#app.square .sounder span {
+  display: none;
+}
+#app.square .sconf {
+  flex-basis: 4rem;
+}
+#app.square .toolbar_item {
+  padding: .1rem .2rem;
+}
+#app.panel .sounder {
+  width: 2rem;
+  height: 2rem;
+  flex-basis: 2rem;
+}
+#app.panel .sounder span {
+  display: none;
+}
+#app.panel .sconf {
+  flex-basis: 4rem;
+}
+#app.panel .toolbar_item {
+  padding: .04rem;
+  min-width: 1rem;
+}
+#toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-between;
+  cursor: default;
+  padding: 0;
+  background: #151515;
+  flex-direction: row-reverse;
+  -webkit-app-region: drag;
+}
+#config,
+#soundpad {
+  overflow-y: auto;
+}
+#config::-webkit-scrollbar,
+#soundpad::-webkit-scrollbar {
+  width: 0.15rem;
+  height: 0.15rem;
+}
+#config::-webkit-scrollbar-thumb,
+#soundpad::-webkit-scrollbar-thumb {
+  background: #777;
+}
+#config::-webkit-scrollbar-track,
+#soundpad::-webkit-scrollbar-track {
+  background: #3c3c3c;
+}
+#config body,
+#soundpad body {
+  scrollbar-face-color: #777;
+  scrollbar-track-color: #3c3c3c;
+}
+#config {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: stretch;
+  cursor: default;
+  padding: 0;
+  justify-content: start;
+}
+.toolbar_item {
+  -webkit-border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;
+  overflow: visible;
+  background: #fff;
+  border: 0px solid #d8d8d8;
+  border-top-width: 0px;
+  /*display: inline-block;*/
+  font-weight: bold;
+  padding: 0.7em;
+  margin: 0.3em;
+  border-width: 1px;
+  border-style: solid;
+  border-bottom-width: 2px;
+  text-decoration: none;
+  border-color: #555555;
+  color: #fff;
+  background: #666666;
+  box-shadow: 0 1px 0px 0px rgba(255, 255, 255, 0.2) inset;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  flex-grow: 1;
+  min-width: 3em;
+  flex-grow: 0;
+  padding: .4rem .3rem;
+  margin: .05rem;
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  -webkit-app-region: no-drag;
+}
+.toolbar_item i {
+  color: #777;
+}
+.toolbar_item.active {
+  background: #3c3c3c;
+}
+.toolbar_item.active i {
+  color: #fff;
+}
+.toolbar_item:hover {
+  background: #777;
+}
+.toolbar_item:hover i {
+  color: #fff;
+}
+.toolbar_item:active {
+  background: #5e5e5e;
+}
+.toolbar_item:active i {
+  color: #fff;
+}
+#soundpad {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: start;
+}
+.sounder {
+  -webkit-border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;
+  overflow: visible;
+  background: #fff;
+  border: 0px solid #d8d8d8;
+  border-top-width: 0px;
+  /*display: inline-block;*/
+  font-weight: bold;
+  padding: 0.7em;
+  margin: 0.3em;
+  border-width: 1px;
+  border-style: solid;
+  border-bottom-width: 2px;
+  text-decoration: none;
+  border-color: #555555;
+  color: #fff;
+  background: #666666;
+  box-shadow: 0 1px 0px 0px rgba(255, 255, 255, 0.2) inset;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  flex-grow: 1;
+  padding: .1rem;
+  width: 6rem;
+  height: 6rem;
+  flex-basis: 6rem;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: stretch;
+  align-items: center;
+  -webkit-transition: transform 0.3s ease-out 0s;
+  -moz-transition: transform 0.3s ease-out 0s;
+  -ms-transition: transform 0.3s ease-out 0s;
+  -o-transition: transform 0.3s ease-out 0s;
+  transition: transform 0.3s ease-out 0s;
+  flex-direction: column;
+  -webkit-app-region: no-drag;
+}
+.sounder .core {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.sounder i {
+  text-align: center;
+  font-size: 140%;
+}
+.sounder span {
+  margin-top: .5rem;
+}
+.sounder:hover {
+  background: #777;
+}
+.sounder:active {
+  background: #5e5e5e;
+}
+.sconf {
+  -webkit-border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;
+  overflow: visible;
+  background: #fff;
+  border: 0px solid #d8d8d8;
+  border-top-width: 0px;
+  /*display: inline-block;*/
+  font-weight: bold;
+  padding: 0.7em;
+  margin: 0.3em;
+  border-width: 1px;
+  border-style: solid;
+  border-bottom-width: 2px;
+  text-decoration: none;
+  border-color: #555555;
+  color: #fff;
+  background: #666666;
+  box-shadow: 0 1px 0px 0px rgba(255, 255, 255, 0.2) inset;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  flex-grow: 1;
+  flex-basis: 6rem;
+  flex-grow: 0;
+  padding: 0;
+  width: 6rem;
+  display: flex;
+  flex-direction: column;
+  -webkit-app-region: no-drag;
+}
+.sconf input {
+  width: 100%;
+  margin: 0.1em 0;
+  border: 0;
+  background: #3c3c3c;
+  color: #ddd;
+  padding: .2rem;
+  border: 1px solid #000;
+  border-radius: 3px 0 0 3px;
+  border-right-width: 0;
+}
+.sconf input:hover,
+.sconf input:active {
+  background: #484848;
+}
+.sconf .ico_input {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: stretch;
+  flex-wrap: nowrap;
+}
+.sconf .ico_input input {
+  flex-grow: 1;
+}
+.sconf .ico_input select {
+  width: 1rem;
+  background: #3c3c3c;
+  color: #ddd;
+}
+.sconf .ico_input option {
+  color: #ddd;
+}
+.sconf .ico_input i {
+  padding: .2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sconf .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: stretch;
+  flex-wrap: nowrap;
+}
+.sconf .handler {
+  flex-grow: 1;
+  cursor: grab;
+}
+.sconf .remove {
+  -webkit-border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;
+  overflow: visible;
+  background: #fff;
+  border: 0px solid #d8d8d8;
+  border-top-width: 0px;
+  /*display: inline-block;*/
+  font-weight: bold;
+  padding: 0.7em;
+  margin: 0.3em;
+  border-width: 1px;
+  border-style: solid;
+  border-bottom-width: 2px;
+  text-decoration: none;
+  border-color: #555555;
+  color: #fff;
+  background: #666666;
+  box-shadow: 0 1px 0px 0px rgba(255, 255, 255, 0.2) inset;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: .04rem .2rem;
+  margin: .05rem;
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  cursor: pointer;
+}
+.sconf .remove:hover {
+  background: #777;
+}
+.sconf .remove:active {
+  background: #5e5e5e;
+}
+.new_sound {
+  display: none;
+}
+.new_sound + label {
+  -webkit-border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;
+  overflow: visible;
+  background: #fff;
+  border: 0px solid #d8d8d8;
+  border-top-width: 0px;
+  /*display: inline-block;*/
+  font-weight: bold;
+  padding: 0.7em;
+  margin: 0.3em;
+  border-width: 1px;
+  border-style: solid;
+  border-bottom-width: 2px;
+  text-decoration: none;
+  border-color: #555555;
+  color: #fff;
+  background: #666666;
+  box-shadow: 0 1px 0px 0px rgba(255, 255, 255, 0.2) inset;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: stretch;
+  align-items: center;
+  margin: 0;
+  padding: .1em;
+  flex-grow: 1;
+}
+.new_sound + label span {
+  flex-grow: 1;
+  flex-grow: 0;
+}
+.new_sound + label:hover {
+  background: #777;
+}
+.new_sound + label:active {
+  background: #5e5e5e;
+}
+.sound_list {
+  overflow-y: scroll;
+  max-height: 5rem;
+}
+.sound_list::-webkit-scrollbar {
+  width: 0.15rem;
+  height: 0.15rem;
+}
+.sound_list::-webkit-scrollbar-thumb {
+  background: #777;
+}
+.sound_list::-webkit-scrollbar-track {
+  background: #3c3c3c;
+}
+.sound_list body {
+  scrollbar-face-color: #777;
+  scrollbar-track-color: #3c3c3c;
+}
+.sounditem {
+  display: flex;
+  margin: 0.1em 0;
+}
+.sounditem button {
+  -webkit-border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;
+  overflow: visible;
+  background: #fff;
+  border: 0px solid #d8d8d8;
+  border-top-width: 0px;
+  /*display: inline-block;*/
+  font-weight: bold;
+  padding: 0.7em;
+  margin: 0.3em;
+  border-width: 1px;
+  border-style: solid;
+  border-bottom-width: 2px;
+  text-decoration: none;
+  border-color: #555555;
+  color: #fff;
+  background: #666666;
+  box-shadow: 0 1px 0px 0px rgba(255, 255, 255, 0.2) inset;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: stretch;
+  padding: .04rem .2rem;
+  margin: .1rem;
+  margin-left: 0;
+  background: #3c3c3c;
+  border-color: #000;
+  box-shadow: none;
+  cursor: pointer;
+  border-radius: 0 3px 3px 0;
+}
+.sounditem button:hover {
+  background: #484848;
+}
+.sounditem button:active {
+  background: #3c3c3c;
+}
+#new_sounder {
+  -webkit-border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;
+  overflow: visible;
+  background: #fff;
+  border: 0px solid #d8d8d8;
+  border-top-width: 0px;
+  /*display: inline-block;*/
+  font-weight: bold;
+  padding: 0.7em;
+  margin: 0.3em;
+  border-width: 1px;
+  border-style: solid;
+  border-bottom-width: 2px;
+  text-decoration: none;
+  border-color: #555555;
+  color: #fff;
+  background: #666666;
+  box-shadow: 0 1px 0px 0px rgba(255, 255, 255, 0.2) inset;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: stretch;
+  align-items: center;
+  margin: 1rem .3rem;
+  padding: .1em .3em;
+  cursor: pointer;
+  background: #3c3c3c;
+  flex-basis: 6rem;
+  -webkit-app-region: no-drag;
+}
+#new_sounder:hover {
+  background: #777;
+}
+#new_sounder:active {
+  background: #5e5e5e;
+}
+.drag_ghost {
+  opacity: 0.8;
+}
+.drag_drag {
+  outline: 1ps solid red;
+}
